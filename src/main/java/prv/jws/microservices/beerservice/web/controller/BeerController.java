@@ -1,5 +1,6 @@
 package prv.jws.microservices.beerservice.web.controller;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
@@ -17,8 +18,8 @@ public interface BeerController {
     ResponseEntity<BeerDto> getBeerById (@PathVariable("beerId") UUID beerId);
 
     @PostMapping
-    ResponseEntity saveNewBeer(@RequestBody BeerDto beerDto);
+    ResponseEntity saveNewBeer(@Valid @RequestBody BeerDto beerDto);
 
     @PutMapping(path = "/{beerId}")
-    ResponseEntity updateBeerById(@PathVariable(name="beerId") UUID beerId, @RequestBody BeerDto beerDto);
+    ResponseEntity updateBeerById(@PathVariable(name="beerId") UUID beerId, @Valid @RequestBody BeerDto beerDto);
 }
