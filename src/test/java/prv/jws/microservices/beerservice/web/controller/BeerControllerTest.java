@@ -2,7 +2,6 @@ package prv.jws.microservices.beerservice.web.controller;
 
 import java.util.UUID;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ class BeerControllerTest {
 
     @Test
     void getBeerById() throws Exception {
-        mockMvc.perform(get("/api/v1/beer/" + UUID.randomUUID().toString()).accept(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/api/v1/beers/" + UUID.randomUUID().toString()).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
 
@@ -35,7 +34,7 @@ class BeerControllerTest {
     void saveNewBeer() throws Exception {
         BeerDto beerDto = BeerDto.builder().build();
         String beerDtoJson = objectMapper.writeValueAsString(beerDto);
-        mockMvc.perform(post("/api/v1/beer/").contentType(MediaType.APPLICATION_JSON)
+        mockMvc.perform(post("/api/v1/beers/").contentType(MediaType.APPLICATION_JSON)
                 .content(beerDtoJson))
                 .andExpect(status().isCreated());
     }
@@ -44,7 +43,7 @@ class BeerControllerTest {
     void updateBeerById() throws Exception {
         BeerDto beerDto = BeerDto.builder().build();
         String beerDtoJson = objectMapper.writeValueAsString(beerDto);
-        mockMvc.perform(put("/api/v1/beer/"+UUID.randomUUID()).contentType(MediaType.APPLICATION_JSON)
+        mockMvc.perform(put("/api/v1/beers/"+UUID.randomUUID()).contentType(MediaType.APPLICATION_JSON)
                 .content(beerDtoJson))
                 .andExpect(status().isNoContent());
     }

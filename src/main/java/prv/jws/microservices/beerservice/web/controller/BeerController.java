@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import prv.jws.microservices.beerservice.web.model.BeerDto;
 
-@RequestMapping("/api/v1/beer")
+@RequestMapping("/api/v1/beers")
 public interface BeerController {
     @GetMapping(path = "/{beerId}")
     ResponseEntity<BeerDto> getBeerById (@PathVariable("beerId") UUID beerId);
