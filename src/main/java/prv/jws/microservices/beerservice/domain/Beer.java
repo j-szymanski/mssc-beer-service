@@ -43,7 +43,7 @@ public class Beer {
     private Timestamp lastModifiedDate;
 
     private String beerName;
-    private String beerStype;
+    private String beerStyle;
 
     @Column(unique = true)
     private Long upc;
