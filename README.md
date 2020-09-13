@@ -1,6 +1,6 @@
 # MSCC Beer Service
 
-[![CircleCI](https://circleci.com/gh/j-szymanski/mssc-beer-service.svg?style=svg)](https://circleci.com/gh/j-szymanski/mssc-beer-service)
+[![CircleCI](https://circleci.com/gh/j-szymanski/mssc-beer-service.svg?style=svg&circle-token=9ef9aec3a24d4bc996e1b15bed3433b0bec8e1d0)](https://circleci.com/gh/j-szymanski/mssc-beer-service)
 
 # MSSC Beer Order Service
 
