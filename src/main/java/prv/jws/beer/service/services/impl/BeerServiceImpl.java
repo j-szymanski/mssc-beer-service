@@ -70,6 +70,22 @@ public class BeerServiceImpl implements BeerService {
         return list;
     }
 
+    @Cacheable(cacheNames = {"beerByUpcCache"}, key="#upc", condition = "#showOnHand == false")
+    @Override
+    public BeerDto getByUpc(final String upc, final Boolean showOnHand) {
+        Beer beer = beerRepository
+                .findByUpc(upc)
+                .orElseThrow(NotFoundException::new);
+        if (showOnHand){
+            log.debug("Getting WITH inventory");
+            return beerMapper.beerToBeerDtoWithInventory(beer);
+        }
+        else {
+            log.debug("Getting WITHOUT inventory");
+            return beerMapper.beerToBeerDto(beer);
+        }
+    }
+
     @Cacheable(cacheNames = {"beerCache"}, key="#beerId", condition = "#showOnHand == false")
     @Override
     public BeerDto getById(final UUID beerId, final Boolean showOnHand) {

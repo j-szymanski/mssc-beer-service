@@ -1,5 +1,6 @@
 package prv.jws.beer.service.repositories;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.domain.Page;
@@ -14,4 +15,6 @@ public interface BeerRepository extends PagingAndSortingRepository<Beer, UUID> {
     Page<Beer> findAllByBeerName(String beerName, PageRequest pageRequest);
 
     Page<Beer> findAllByBeerStyle(BeerStyle beerStyle, PageRequest pageRequest);
+
+    Optional<Beer> findByUpc(String upc);
 }

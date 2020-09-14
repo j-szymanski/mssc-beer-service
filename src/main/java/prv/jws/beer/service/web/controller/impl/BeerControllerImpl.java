@@ -61,6 +61,15 @@ public class BeerControllerImpl implements BeerController {
     }
 
     @Override
+    public ResponseEntity<BeerDto> getBeerByUpc(final String upc, Boolean showOnHand) {
+        if (isNull(showOnHand)){
+            showOnHand = false;
+        }
+        log.info("Getting by UPC {}, show Inventory {}", upc, showOnHand);
+        return new ResponseEntity<>(beerService.getByUpc(upc, showOnHand), HttpStatus.OK);
+    }
+
+    @Override
     public ResponseEntity saveNewBeer(final BeerDto beerDto) {
         log.info("Posting beer with name {}", beerDto.getBeerName());
         beerService.saveNewBeer(beerDto);
