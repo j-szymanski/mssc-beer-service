@@ -9,5 +9,6 @@ import prv.jws.beer.service.web.model.BeerDto;
 @DecoratedWith(BeerMapperDecorator.class)
 public interface BeerMapper {
     Beer beerDtoToBeer(BeerDto beerDto);
+    BeerDto beerToBeerDtoWithInventory(Beer beer);
     BeerDto beerToBeerDto(Beer beer);
 }

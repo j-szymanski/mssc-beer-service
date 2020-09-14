@@ -1,6 +1,5 @@
 package prv.jws.beer.service.web.mappers;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +30,11 @@ public abstract class BeerMapperDecorator implements BeerMapper {
 
     @Override
     public BeerDto beerToBeerDto(final Beer beer) {
+        return beerMapper.beerToBeerDto(beer);
+    }
+
+    @Override
+    public BeerDto beerToBeerDtoWithInventory(final Beer beer) {
         BeerDto beerDto = beerMapper.beerToBeerDto(beer);
         beerDto.setQuantityOnHand(beerInventoryService.getOnHandInventory(beer.getId()));
         log.debug("Beer Dto is {}",beerDto);

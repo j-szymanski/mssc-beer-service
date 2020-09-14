@@ -3,8 +3,6 @@ package prv.jws.beer.service.services.impl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -29,7 +27,9 @@ public class BeerServiceImpl implements BeerService {
     private final BeerMapper beerMapper;
 
     @Override
-    public BeerPagedList getPageOfBeers(final String beerName, final BeerStyle beerStyle, final PageRequest pageRequest) {
+    public BeerPagedList getPageOfBeers(final String beerName, final BeerStyle beerStyle,
+                                        final PageRequest pageRequest, final Boolean showOnHand) {
+
         log.debug("Getting beers");
 
         BeerPagedList list;
@@ -47,22 +47,40 @@ public class BeerServiceImpl implements BeerService {
         else {
             beerPage = beerRepository.findAll(pageRequest);
         }
-        list = new BeerPagedList(beerPage.getContent()
-                .stream()
-                .map(beer -> beerMapper.beerToBeerDto(beer))
-                .collect(Collectors.toList()),
-                PageRequest.of(beerPage.getPageable().getPageNumber(), beerPage.getPageable().getPageSize()),
-                beerPage.getTotalElements());
+        if (showOnHand){
+            log.debug("Getting with inventory");
+            list = new BeerPagedList(beerPage.getContent()
+                    .stream()
+                    .map(beerMapper::beerToBeerDtoWithInventory)
+                    .collect(Collectors.toList()),
+                    PageRequest.of(beerPage.getPageable().getPageNumber(), beerPage.getPageable().getPageSize()),
+                    beerPage.getTotalElements());
+        }
+        else {
+            log.debug("Getting WITHOUT inventory");
+            list = new BeerPagedList(beerPage.getContent()
+                    .stream()
+                    .map(beerMapper::beerToBeerDto)
+                    .collect(Collectors.toList()),
+                    PageRequest.of(beerPage.getPageable().getPageNumber(), beerPage.getPageable().getPageSize()),
+                    beerPage.getTotalElements());
+        }
         return list;
     }
 
     @Override
-    public BeerDto getById(final UUID beerId) {
-
-        return beerMapper.beerToBeerDto(
-                beerRepository
-                        .findById(beerId)
-                        .orElseThrow(NotFoundException::new));
+    public BeerDto getById(final UUID beerId, final Boolean showOnHand) {
+        Beer beer = beerRepository
+                .findById(beerId)
+                .orElseThrow(NotFoundException::new);
+        if (showOnHand){
+            log.debug("Getting WITH inventory");
+            return beerMapper.beerToBeerDtoWithInventory(beer);
+        }
+        else {
+            log.debug("Getting WITHOUT inventory");
+            return beerMapper.beerToBeerDto(beer);
+        }
     }
 
     @Override

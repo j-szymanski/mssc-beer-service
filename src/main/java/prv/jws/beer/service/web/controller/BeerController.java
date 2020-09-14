@@ -24,10 +24,12 @@ public interface BeerController {
     ResponseEntity<BeerPagedList> getBeers(@RequestParam(value = "pageNumber", required = false) Integer pageNumber,
                                            @RequestParam(value = "pageSize", required = false) Integer pageSize,
                                            @RequestParam(value = "beerName", required = false) String beerName,
-                                           @RequestParam(value = "beerStyle", required = false) BeerStyle beerStyle);
+                                           @RequestParam(value = "beerStyle", required = false) BeerStyle beerStyle,
+                                           @RequestParam(value = "showInventoryOnHand", required = false) Boolean showOnHand);
 
     @GetMapping(path = "/{beerId}")
-    ResponseEntity<BeerDto> getBeerById (@PathVariable("beerId") UUID beerId);
+    ResponseEntity<BeerDto> getBeerById (@PathVariable("beerId") UUID beerId,
+                                         @RequestParam(value = "showInventoryOnHand", required = false) Boolean showOnHand);
 
     @PostMapping
     ResponseEntity saveNewBeer(@Valid @RequestBody BeerDto beerDto);

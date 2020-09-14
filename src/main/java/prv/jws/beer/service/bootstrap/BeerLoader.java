@@ -40,27 +40,27 @@ public class BeerLoader implements CommandLineRunner {
                     .beerName("Żubr")
                     .beerStyle(BeerStyle.LAGER.name())
                     .quantityToBrew(200)
-                    .quantityOnHand(12)
                     .upc(BEER_1_UPC)
                     .price(new BigDecimal("5.80"))
+                    .minOnHand(20)
                     .build());
             beerRepository.save(Beer.builder()
                     .id(BEER_2_UUID)
                     .beerName("Królewskie IPA")
                     .beerStyle(BeerStyle.IPA.name())
                     .quantityToBrew(100)
-                    .quantityOnHand(10)
                     .upc(BEER_2_UPC)
                     .price(new BigDecimal("7.50"))
+                    .minOnHand(30)
                     .build());
             beerRepository.save(Beer.builder()
                     .id(BEER_3_UUID)
                     .beerName("Irish Draft")
                     .beerStyle(BeerStyle.STOUT.name())
                     .quantityToBrew(500)
-                    .quantityOnHand(30)
                     .upc(BEER_3_UPC)
                     .price(new BigDecimal("8.50"))
+                    .minOnHand(50)
                     .build());
             log.info("Beers Loaded! Number of beers: {}", beerRepository.count());
         }
