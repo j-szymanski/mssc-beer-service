@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import prv.jws.beer.service.domain.Beer;
 import prv.jws.beer.service.repositories.BeerRepository;
+import prv.jws.beer.service.web.model.BeerStyle;
 
 @Slf4j
 @Component
@@ -37,27 +38,27 @@ public class BeerLoader implements CommandLineRunner {
             beerRepository.save(Beer.builder()
                     .id(BEER_1_UUID)
                     .beerName("Żubr")
-                    .beerStyle("Lager")
+                    .beerStyle(BeerStyle.LAGER.name())
                     .quantityToBrew(200)
-                    .minOnHand(12)
+                    .quantityOnHand(12)
                     .upc(BEER_1_UPC)
                     .price(new BigDecimal("5.80"))
                     .build());
             beerRepository.save(Beer.builder()
                     .id(BEER_2_UUID)
                     .beerName("Królewskie IPA")
-                    .beerStyle("IPA")
+                    .beerStyle(BeerStyle.IPA.name())
                     .quantityToBrew(100)
-                    .minOnHand(10)
+                    .quantityOnHand(10)
                     .upc(BEER_2_UPC)
                     .price(new BigDecimal("7.50"))
                     .build());
             beerRepository.save(Beer.builder()
                     .id(BEER_3_UUID)
                     .beerName("Irish Draft")
-                    .beerStyle("Stout")
+                    .beerStyle(BeerStyle.STOUT.name())
                     .quantityToBrew(500)
-                    .minOnHand(30)
+                    .quantityOnHand(30)
                     .upc(BEER_3_UPC)
                     .price(new BigDecimal("8.50"))
                     .build());

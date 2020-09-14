@@ -1,0 +1,4 @@
+INSERT INTO beer (id, beer_name, beer_style, quantity_to_brew, quantity_on_hand, upc, price, created_date, last_modified_date) values ('0a818933-087d-47f2-ad83-2f986ed087eb','Zubr','LAGER',200,12,'0631234200036','5.80','2020-09-13 00:42:02.037','2020-09-14 00:42:02.037');
+INSERT INTO beer (id, beer_name, beer_style, quantity_to_brew, quantity_on_hand, upc, price, created_date, last_modified_date) values ('a712d914-61ea-4623-8bd0-32c0f6545bfd','Królewskie IPA','IPA',100,10,'0631234300019','7.50','2020-06-14 10:15:02.037','2020-06-14 11:31:02.037');
+INSERT INTO beer (id, beer_name, beer_style, quantity_to_brew, quantity_on_hand, upc, price, created_date, last_modified_date) values ('026cc3c8-3a0c-4083-a05b-e908048c1b08','Irish Draft','STOUT',500,30,'0083783375213','11.10','2020-07-10 16:11:44.037','2020-08-21 06:44:44.037');
+
