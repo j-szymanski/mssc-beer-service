@@ -1,5 +1,6 @@
 package prv.jws.beer.service.web.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -10,7 +11,10 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
-public class BeerPagedList extends PageImpl<BeerDto> {
+public class BeerPagedList extends PageImpl<BeerDto> implements Serializable {
+
+    static final long serialVersionUID = 1954039778243238565L;
+
 
     @JsonCreator(mode= Mode.PROPERTIES)
     public BeerPagedList(

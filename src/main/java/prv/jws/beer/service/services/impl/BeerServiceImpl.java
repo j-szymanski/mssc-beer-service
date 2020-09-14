@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ public class BeerServiceImpl implements BeerService {
     private final BeerRepository beerRepository;
     private final BeerMapper beerMapper;
 
+    @Cacheable(cacheNames = {"beerListCache"}, condition = "#showOnHand == false")
     @Override
     public BeerPagedList getPageOfBeers(final String beerName, final BeerStyle beerStyle,
                                         final PageRequest pageRequest, final Boolean showOnHand) {
@@ -68,6 +70,7 @@ public class BeerServiceImpl implements BeerService {
         return list;
     }
 
+    @Cacheable(cacheNames = {"beerCache"}, key="#beerId", condition = "#showOnHand == false")
     @Override
     public BeerDto getById(final UUID beerId, final Boolean showOnHand) {
         Beer beer = beerRepository
