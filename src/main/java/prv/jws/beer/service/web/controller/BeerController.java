@@ -31,7 +31,7 @@ public interface BeerController {
     ResponseEntity<BeerDto> getBeerById (@PathVariable("beerId") UUID beerId,
                                          @RequestParam(value = "showInventoryOnHand", required = false) Boolean showOnHand);
 
-    @GetMapping(path = "/byUpc/{upc}")
+    @GetMapping(path = "/by-upc/{upc}")
     ResponseEntity<BeerDto> getBeerByUpc (@PathVariable("upc") String upc,
                                          @RequestParam(value = "showInventoryOnHand", required = false) Boolean showOnHand);
 
