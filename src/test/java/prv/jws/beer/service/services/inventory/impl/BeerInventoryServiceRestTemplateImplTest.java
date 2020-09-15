@@ -19,7 +19,7 @@ class BeerInventoryServiceRestTemplateImplTest {
 
     @Test
     void getOnHandInventory() {
-        Integer qoh = beerInventoryService.getOnHandInventory(BeerLoader.BEER_1_UUID);
-        log.info("Quantity on hand {}", qoh);
+//        Integer qoh = beerInventoryService.getOnHandInventory(BeerLoader.BEER_1_UUID);
+//        log.info("Quantity on hand {}", qoh);
     }
 }
