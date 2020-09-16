@@ -30,6 +30,7 @@ public class BrewingServiceImpl implements BrewingService {
     @Override
     @Scheduled(fixedRate = 5000)            //every 5 secs
     public void checkForLowInventory() {
+        log.info("Checking for low inventory");
         List<Beer> beers = beerRepository.findAll();
         beers.forEach(beer -> {
             Integer inventoryQOH = beerInventoryService.getOnHandInventory(beer.getId());
@@ -38,6 +39,7 @@ public class BrewingServiceImpl implements BrewingService {
             log.debug(">>> Inventory is: {}", inventoryQOH);
 
             if (beer.getMinOnHand() < inventoryQOH) {
+                log.info("Time to brew {}/{} beer", beer.getBeerName(), beer.getBeerStyle());
                 jmsTemplate.convertAndSend(BREWING_REQUEST_QUEUE, new BrewBeerEvent(beerMapper.beerToBeerDto(beer)));
             }
         });

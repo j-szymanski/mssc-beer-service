@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 import prv.jws.beer.service.web.model.BeerDto;
 
+//previous string required both: no args constructor and all args constructor
 @Data
 @RequiredArgsConstructor
 @Builder
