@@ -1,4 +1,4 @@
-package prv.jws.beer.service.services.impl;
+package prv.jws.beer.service.services.brewing.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import prv.jws.beer.service.domain.Beer;
 import prv.jws.beer.service.events.BrewBeerEvent;
 import prv.jws.beer.service.repositories.BeerRepository;
-import prv.jws.beer.service.services.BrewingService;
+import prv.jws.beer.service.services.brewing.BrewingService;
 import prv.jws.beer.service.services.inventory.BeerInventoryService;
 import prv.jws.beer.service.web.mappers.BeerMapper;
 

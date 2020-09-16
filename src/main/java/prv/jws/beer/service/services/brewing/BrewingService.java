@@ -1,4 +1,4 @@
-package prv.jws.beer.service.services;
+package prv.jws.beer.service.services.brewing;
 
 public interface BrewingService {
 
