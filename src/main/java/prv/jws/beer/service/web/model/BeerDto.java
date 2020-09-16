@@ -43,10 +43,10 @@ public class BeerDto implements Serializable {
     private BeerStyle beerStyle;
 
     @NotNull
-    @Positive
     private String upc;
 
     @NotNull
+    @Positive
     @JsonFormat(shape = Shape.STRING)
     private BigDecimal price;
 
