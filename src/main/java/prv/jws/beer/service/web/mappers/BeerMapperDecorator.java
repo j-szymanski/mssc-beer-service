@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import prv.jws.beer.service.domain.Beer;
 import prv.jws.beer.service.services.inventory.BeerInventoryService;
-import prv.jws.beer.service.web.model.BeerDto;
+import prv.jws.brewery.dto.BeerDto;
 
 @Slf4j
 public abstract class BeerMapperDecorator implements BeerMapper {

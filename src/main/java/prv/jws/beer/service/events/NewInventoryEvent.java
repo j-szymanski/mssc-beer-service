@@ -1,6 +1,6 @@
 package prv.jws.beer.service.events;
 
-import prv.jws.beer.service.web.model.BeerDto;
+import prv.jws.brewery.dto.BeerDto;
 
 public class NewInventoryEvent extends BeerEvent {
 

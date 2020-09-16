@@ -3,9 +3,9 @@ package prv.jws.beer.service.services;
 import java.util.UUID;
 
 import org.springframework.data.domain.PageRequest;
-import prv.jws.beer.service.web.model.BeerDto;
 import prv.jws.beer.service.web.model.BeerPagedList;
-import prv.jws.beer.service.web.model.BeerStyle;
+import prv.jws.brewery.dto.BeerDto;
+import prv.jws.brewery.dto.BeerStyle;
 
 public interface BeerService {
     BeerDto getById(UUID beerId, final Boolean showOnHand);

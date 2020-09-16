@@ -3,7 +3,8 @@ package prv.jws.beer.service.web.mappers;
 import org.mapstruct.DecoratedWith;
 import org.mapstruct.Mapper;
 import prv.jws.beer.service.domain.Beer;
-import prv.jws.beer.service.web.model.BeerDto;
+import prv.jws.brewery.dto.BeerDto;
+import prv.jws.brewery.mappers.DateMapper;
 
 @Mapper(uses = {DateMapper.class})
 @DecoratedWith(BeerMapperDecorator.class)

@@ -9,7 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import prv.jws.beer.service.domain.Beer;
 import prv.jws.beer.service.repositories.BeerRepository;
-import prv.jws.beer.service.web.model.BeerStyle;
+import prv.jws.brewery.dto.BeerStyle;
 
 @Slf4j
 @RequiredArgsConstructor

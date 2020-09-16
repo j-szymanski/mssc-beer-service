@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.io.Serializable;
 
-import prv.jws.beer.service.web.model.BeerDto;
+import prv.jws.brewery.dto.BeerDto;
 
 //previous string required both: no args constructor and all args constructor
 @Data

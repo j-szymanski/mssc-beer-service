@@ -11,7 +11,7 @@ import prv.jws.beer.service.domain.Beer;
 import prv.jws.beer.service.events.BrewBeerEvent;
 import prv.jws.beer.service.events.NewInventoryEvent;
 import prv.jws.beer.service.repositories.BeerRepository;
-import prv.jws.beer.service.web.model.BeerDto;
+import prv.jws.brewery.dto.BeerDto;
 
 @Slf4j
 @Service
