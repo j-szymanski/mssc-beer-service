@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import prv.jws.brewery.model.BeerDto;
 import prv.jws.beer.service.web.model.BeerPagedList;
-import prv.jws.brewery.dto.BeerDto;
-import prv.jws.brewery.dto.BeerStyle;
+import prv.jws.brewery.model.BeerStyle;
 
 @RequestMapping("/api/v1/beers")
 public interface BeerController {

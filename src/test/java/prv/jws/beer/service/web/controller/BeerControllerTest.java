@@ -11,8 +11,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import prv.jws.beer.service.services.BeerService;
-import prv.jws.brewery.dto.BeerDto;
-import prv.jws.brewery.dto.BeerStyle;
+import prv.jws.brewery.model.BeerDto;
+import prv.jws.brewery.model.BeerStyle;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;

@@ -16,9 +16,9 @@ import prv.jws.beer.service.repositories.BeerRepository;
 import prv.jws.beer.service.services.BeerService;
 import prv.jws.beer.service.web.exceptions.NotFoundException;
 import prv.jws.beer.service.web.mappers.BeerMapper;
+import prv.jws.brewery.model.BeerDto;
 import prv.jws.beer.service.web.model.BeerPagedList;
-import prv.jws.brewery.dto.BeerDto;
-import prv.jws.brewery.dto.BeerStyle;
+import prv.jws.brewery.model.BeerStyle;
 
 @Slf4j
 @RequiredArgsConstructor

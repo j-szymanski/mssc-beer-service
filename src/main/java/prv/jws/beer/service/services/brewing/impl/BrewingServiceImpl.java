@@ -38,7 +38,7 @@ public class BrewingServiceImpl implements BrewingService {
             log.debug(">>> Minimum on hand {}", beer.getMinOnHand());
             log.debug(">>> Inventory is: {}", inventoryQOH);
 
-            if (beer.getMinOnHand() < inventoryQOH) {
+            if (beer.getMinOnHand() > inventoryQOH) {
                 log.info("Time to brew {}/{} beer", beer.getBeerName(), beer.getBeerStyle());
                 jmsTemplate.convertAndSend(BREWING_REQUEST_QUEUE, new BrewBeerEvent(beerMapper.beerToBeerDto(beer)));
             }

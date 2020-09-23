@@ -1,8 +1,10 @@
 package prv.jws.beer.service.events;
 
-import prv.jws.brewery.dto.BeerDto;
-import prv.jws.brewery.events.BeerEvent;
+import lombok.NoArgsConstructor;
 
+import prv.jws.brewery.model.BeerDto;
+
+@NoArgsConstructor
 public class BrewBeerEvent extends BeerEvent {
 
     public BrewBeerEvent(final BeerDto beerDto) {

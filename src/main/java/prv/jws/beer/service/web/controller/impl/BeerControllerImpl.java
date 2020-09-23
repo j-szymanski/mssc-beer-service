@@ -11,9 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import prv.jws.beer.service.services.BeerService;
 import prv.jws.beer.service.web.controller.BeerController;
+import prv.jws.brewery.model.BeerDto;
 import prv.jws.beer.service.web.model.BeerPagedList;
-import prv.jws.brewery.dto.BeerDto;
-import prv.jws.brewery.dto.BeerStyle;
+import prv.jws.brewery.model.BeerStyle;
 
 import static java.util.Objects.isNull;
 import static org.springframework.beans.support.PagedListHolder.DEFAULT_PAGE_SIZE;

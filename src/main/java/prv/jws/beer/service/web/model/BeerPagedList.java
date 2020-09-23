@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import prv.jws.brewery.dto.BeerDto;
+import prv.jws.brewery.model.BeerDto;
 
 public class BeerPagedList extends PageImpl<BeerDto> implements Serializable {
 

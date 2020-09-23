@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import prv.jws.beer.service.domain.Beer;
-import prv.jws.brewery.dto.BeerStyle;
+import prv.jws.brewery.model.BeerStyle;
 
 public interface BeerRepository extends JpaRepository<Beer, UUID> {
     Page<Beer> findAllByBeerNameAndBeerStyle(String beerName, BeerStyle beerStyle, PageRequest pageRequest);

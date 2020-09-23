@@ -12,16 +12,7 @@
     <name>mssc-beer-service</name>
     <description>MSSC Beer Service</description>
 
-    <properties>
-        <mssc-brewery-jar.version>0.0.1-SNAPSHOT</mssc-brewery-jar.version>
-    </properties>
-
     <dependencies>
-        <dependency>
-            <groupId>prv.jws.brewery</groupId>
-            <artifactId>mssc-brewery-jar</artifactId>
-            <version>${mssc-brewery-jar.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
