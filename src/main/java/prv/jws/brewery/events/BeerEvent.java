@@ -1,4 +1,4 @@
-package prv.jws.beer.service.events;
+package prv.jws.brewery.events;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

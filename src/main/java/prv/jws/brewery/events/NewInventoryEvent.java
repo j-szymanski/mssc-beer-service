@@ -2,7 +2,6 @@ package prv.jws.brewery.events;
 
 import lombok.NoArgsConstructor;
 
-import prv.jws.beer.service.events.BeerEvent;
 import prv.jws.brewery.model.BeerDto;
 
 @NoArgsConstructor

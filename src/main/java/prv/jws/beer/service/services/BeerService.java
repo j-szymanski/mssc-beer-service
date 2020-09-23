@@ -4,7 +4,7 @@ import java.util.UUID;
 
 import org.springframework.data.domain.PageRequest;
 import prv.jws.brewery.model.BeerDto;
-import prv.jws.beer.service.web.model.BeerPagedList;
+import prv.jws.brewery.model.BeerPagedList;
 import prv.jws.brewery.model.BeerStyle;
 
 public interface BeerService {

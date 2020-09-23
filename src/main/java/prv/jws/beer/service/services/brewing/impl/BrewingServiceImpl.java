@@ -9,7 +9,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import prv.jws.beer.service.domain.Beer;
-import prv.jws.beer.service.events.BrewBeerEvent;
+import prv.jws.brewery.events.BrewBeerEvent;
 import prv.jws.beer.service.repositories.BeerRepository;
 import prv.jws.beer.service.services.brewing.BrewingService;
 import prv.jws.beer.service.services.inventory.BeerInventoryService;
