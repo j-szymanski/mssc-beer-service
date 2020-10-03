@@ -16,6 +16,7 @@ import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Data
 @NoArgsConstructor
@@ -32,9 +33,11 @@ public class BeerDto implements Serializable {
 
     @Null
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssZ", shape = Shape.STRING)
+    @JsonProperty("createdDate")
     private OffsetDateTime createdDate;
     @Null
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssZ", shape = Shape.STRING)
+    @JsonProperty("lastModifiedDate")
     private OffsetDateTime lastModifiedDate;
 
     @NotBlank
