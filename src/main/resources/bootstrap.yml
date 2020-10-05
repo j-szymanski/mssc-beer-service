@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: beer-service
+  artemis:
+    user: jurek
+    password: 1Dlaczegonie
+
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=MYSQL
+  h2:
+    console:
+      enabled: true
+
+  # Spring Data hangs when not set under Spring Boot 2.3.0
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: default
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+      write-date-timestamps-as-nanoseconds: true
+
+
+
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+logging:
+  level:
+    prv.jws: debug
+
+server:
+  port: 8080
+
+#docker ActiveMQ user and password
+
+sfg.brewery.inventory:
+  beer-inventory-service-host: http://localhost:8082
+#spring.cache.jcache.config=classpath:ehcache.xml
