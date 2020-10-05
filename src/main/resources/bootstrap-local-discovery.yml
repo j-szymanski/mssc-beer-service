@@ -5,4 +5,6 @@ spring:
     config:
       discovery:
         service-id: config-server
-
+      fail-fast: true
+      password: MyPassword
+      username: MyUserName
