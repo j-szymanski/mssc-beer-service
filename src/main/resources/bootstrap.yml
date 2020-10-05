@@ -1,6 +1,8 @@
 spring:
   application:
     name: beer-service
+
+  #docker ActiveMQ user and password
   artemis:
     user: jurek
     password: 1Dlaczegonie
@@ -22,11 +24,10 @@ spring:
       write-dates-as-timestamps: false
       write-date-timestamps-as-nanoseconds: true
 
-
-
   cache:
     jcache:
       config: classpath:ehcache.xml
+
 logging:
   level:
     prv.jws: debug
@@ -34,8 +35,7 @@ logging:
 server:
   port: 8080
 
-#docker ActiveMQ user and password
-
-sfg.brewery.inventory:
-  beer-inventory-service-host: http://localhost:8082
-#spring.cache.jcache.config=classpath:ehcache.xml
+sfg:
+  brewery:
+    inventory:
+      beer-inventory-service-host: http://localhost:8082
