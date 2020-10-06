@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Profile;
@@ -20,7 +21,7 @@ import prv.jws.beer.service.services.inventory.model.BeerInventoryDto;
 @Profile("!local-discovery")
 @Slf4j
 @Service
-@ConfigurationProperties(prefix = "sfg.brewery.inventory", ignoreUnknownFields = false)
+@ConfigurationProperties(prefix = "sfg.brewery.inventory", ignoreUnknownFields = true)
 public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryService {
 
     public static final String INVENTORY_PATH = "/api/v1/beer/{beerId}/inventory";
@@ -32,8 +33,11 @@ public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryServic
         this.beerInventoryServiceHost = beerInventoryServiceHost;
     }
 
-    public BeerInventoryServiceRestTemplateImpl(final RestTemplateBuilder restTemplateBuilder) {
-        this.restTemplate = restTemplateBuilder.build();
+    public BeerInventoryServiceRestTemplateImpl(final RestTemplateBuilder restTemplateBuilder,
+                                                @Value("${sfg.brewery.inventory.user}") String inventoryUser,
+                                                @Value("${sfg.brewery.inventory.password}") String inventoryPassword) {
+        this.restTemplate = restTemplateBuilder.basicAuthentication(inventoryUser, inventoryPassword)
+                                               .build();
     }
 
     @Override

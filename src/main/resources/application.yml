@@ -36,3 +36,5 @@ sfg:
   brewery:
     inventory:
       beer-inventory-service-host: http://localhost:8082
+      user: good
+      password: beer
