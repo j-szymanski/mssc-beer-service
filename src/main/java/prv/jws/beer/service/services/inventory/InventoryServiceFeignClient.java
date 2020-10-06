@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import prv.jws.beer.service.config.FeignClientConfig;
 import prv.jws.beer.service.services.inventory.impl.InventoryServiceFeignClientFallbackImpl;
 import prv.jws.beer.service.services.inventory.model.BeerInventoryDto;
 
@@ -16,7 +17,9 @@ import static prv.jws.beer.service.services.inventory.impl.BeerInventoryServiceR
 /**
  * Created by Jerzy Szymanski on 04.10.2020 at 16:46
  */
-@FeignClient(name="inventory-service", fallback = InventoryServiceFeignClientFallbackImpl.class)
+@FeignClient(name="inventory-service",
+        fallback = InventoryServiceFeignClientFallbackImpl.class,
+        configuration = FeignClientConfig.class)
 public interface InventoryServiceFeignClient {
 
     @RequestMapping(method = RequestMethod.GET, path = INVENTORY_PATH)
