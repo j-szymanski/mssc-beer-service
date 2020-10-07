@@ -1,7 +1,5 @@
 package prv.jws.beer.service.config;
 
-import feign.Logger;
-import feign.Logger.Level;
 import feign.auth.BasicAuthRequestInterceptor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,7 +20,7 @@ public class FeignClientConfig {
         return new BasicAuthRequestInterceptor(inventoryUser, inventoryPassword);
     }
 //    @Bean
-    Logger.Level feignLoggerLevel() {
-        return Level.FULL;
-    }
+//    Logger.Level feignLoggerLevel() {
+//        return Level.FULL;
+//    }
 }
