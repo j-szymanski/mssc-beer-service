@@ -1,0 +1,133 @@
+{
+  "inventory-failover": {
+    "eureka": {
+      "client": {
+        "serviceUrl": {
+          "defaultZone": "http://netflix:eureka@46.101.226.230:8761/eureka/"
+        },
+        "region": "default",
+        "registerWithEureka": true
+      },
+      "instance": {
+        "preferIpAddress": false,
+        "hostname": "inventory-failover"
+      }
+    },
+    "spring": {
+      "cloud": {
+        "config": {
+          "discovery": {
+            "enabled": true,
+            "serviceId": "config-server"
+          },
+          "fail-fast": false,
+          "password": "MyPassword",
+          "username": "MyUserName"
+        }
+      }
+    },
+    "application": {
+      "name": "inventory-failover"
+    }
+  },
+  "beer-service": {
+    "eureka": {
+      "client": {
+        "serviceUrl": {
+          "defaultZone": "http://netflix:eureka@46.101.226.230:8761/eureka/"
+        },
+        "region": "default",
+        "registerWithEureka": true
+      },
+      "instance": {
+        "preferIpAddress": false,
+        "hostname": "beer-service"
+      }
+    },
+    "spring": {
+      "cloud": {
+        "config": {
+          "discovery": {
+            "enabled": true,
+            "serviceId": "config-server"
+          },
+          "fail-fast": false,
+          "password": "MyPassword",
+          "username": "MyUserName"
+        }
+      }
+    },
+    "application": {
+      "name": "beer-service"
+    }
+  },
+  "order-service": {
+    "eureka": {
+      "client": {
+        "serviceUrl": {
+          "defaultZone": "http://netflix:eureka@46.101.226.230:8761/eureka/"
+        },
+        "region": "default",
+        "registerWithEureka": true
+      },
+      "instance": {
+        "preferIpAddress": false,
+        "hostname": "order-service"
+      }
+    },
+    "spring": {
+      "cloud": {
+        "config": {
+          "discovery": {
+            "enabled": true,
+            "serviceId": "config-server"
+          },
+          "fail-fast": false,
+          "password": "MyPassword",
+          "username": "MyUserName"
+        }
+      }
+    },
+    "application": {
+      "name": "order-service"
+    },
+    "sfg": {
+      "brewery": {
+        "beer": {
+          "beer-service-host": "http://beer-service:8082"
+        }
+      }
+    }
+  },
+  "gateway": {
+    "eureka": {
+      "client": {
+        "serviceUrl": {
+          "defaultZone": "http://netflix:eureka@46.101.226.230:8761/eureka/"
+        },
+        "region": "default",
+        "registerWithEureka": true
+      },
+      "instance": {
+        "preferIpAddress": false,
+        "hostname": "gateway"
+      }
+    },
+    "spring": {
+      "cloud": {
+        "config": {
+          "discovery": {
+            "enabled": true,
+            "serviceId": "config-server"
+          },
+          "fail-fast": false,
+          "password": "MyPassword",
+          "username": "MyUserName"
+        }
+      }
+    },
+    "application": {
+      "name": "gateway"
+    }
+  }
+}

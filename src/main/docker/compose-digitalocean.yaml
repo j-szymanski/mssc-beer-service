@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+  filebeat:
+    image: sfgbeerworks/filebeat:7.7.0
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    extra_hosts:
+      - "elasticsearch:159.89.104.238"
+    deploy:
+      mode: global
+      restart_policy:
+        condition: on-failure
+
+  inventory-failover:
+    image: jurekszy/mssc-inventory-failover
+    ports:
+      - 8083:8083
+    environment:
+      SPRING_PROFILES_ACTIVE: digitalocean
+      SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://netflix:eureka@46.101.226.230:8761/eureka/"},"region":"default","registerWithEureka":true},"instance":{"preferIpAddress":false,"hostname":"inventory-failover"}},"spring":{"cloud":{"config":{"discovery":{"enabled":true,"serviceId":"config-server"},"fail-fast":false,"password":"MyPassword","username":"MyUserName"}}},"application":{"name":"inventory-failover"}}'
+    deploy:
+      replicas: 2
+
+  inventory-service:
+    image: jurekszy/mssc-beer-inventory-service
+    ports:
+      - 8082:8082
+    environment:
+      SPRING_PROFILES_ACTIVE: digitalocean
+      SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://netflix:eureka@46.101.226.230:8761/eureka/"},"region":"default","registerWithEureka":true},"instance":{"preferIpAddress":false,"hostname":"inventory-service"}},"spring":{"cloud":{"config":{"discovery":{"enabled":true,"serviceId":"config-server"},"fail-fast":false,"password":"MyPassword","username":"MyUserName"}}},"application":{"name":"inventory-service"}}'
+    restart: on-failure
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
+    deploy:
+      replicas: 2
+
+  beer-service:
+    image: jurekszy/mssc-beer-service
+    ports:
+      - 8080:8080
+    environment:
+      SPRING_PROFILES_ACTIVE: digitalocean
+      SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://netflix:eureka@46.101.226.230:8761/eureka/"},"region":"default","registerWithEureka":true},"instance":{"preferIpAddress":false,"hostname":"beer-service"}},"spring":{"cloud":{"config":{"discovery":{"enabled":true,"serviceId":"config-server"},"fail-fast":false,"password":"MyPassword","username":"MyUserName"}}},"application":{"name":"beer-service"},"sfg":{"brewery":{"inventory":{"beer-inventory-service-host":"http://inventory-service:8082","user":"good","password":"beer"}}}}'
+    restart: on-failure
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
+    deploy:
+      replicas: 2
+
+  order-service:
+    image: jurekszy/mssc-beer-order-service
+    ports:
+      - 8081:8081
+    environment:
+      SPRING_PROFILES_ACTIVE: digitalocean
+      SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://netflix:eureka@46.101.226.230:8761/eureka/"},"region":"default","registerWithEureka":true},"instance":{"preferIpAddress":false,"hostname":"order-service"}},"spring":{"cloud":{"config":{"discovery":{"enabled":true,"serviceId":"config-server"},"fail-fast":false,"password":"MyPassword","username":"MyUserName"}}},"application":{"name":"order-service"},"sfg":{"brewery":{"beer":{"beer-service-host":"http://beer-service:8082"}}}}'
+    restart: on-failure
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
+    deploy:
+      replicas: 2
+
+  gateway:
+    image: jurekszy/mssc-brewery-gateway
+    ports:
+      - 9090:9090
+    environment:
+      SPRING_PROFILES_ACTIVE: digitalocean
+      SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://netflix:eureka@46.101.226.230:8761/eureka/"},"region":"default","registerWithEureka":true},"instance":{"preferIpAddress":false,"hostname":"gateway"}},"spring":{"cloud":{"config":{"discovery":{"enabled":true,"serviceId":"config-server"},"fail-fast":false,"password":"MyPassword","username":"MyUserName"}}},"application":{"name":"gateway"}}'
+      SPRING_ZIPKIN_BASE_URL: http://159.89.96.33:9411
+    restart: on-failure
+    labels:
+      collect_logs_with_filebeat: "true"
+      decode_log_event_to_json_object: "true"
+    deploy:
+      replicas: 2

@@ -17,7 +17,7 @@ import prv.jws.beer.service.services.inventory.model.BeerInventoryDto;
 /**
  * Created by Jerzy Szymanski on 04.10.2020 at 16:52
  */
-@Profile("local-discovery")
+@Profile({"local-discovery","digitalocean"})
 @Slf4j
 @RequiredArgsConstructor
 @Service

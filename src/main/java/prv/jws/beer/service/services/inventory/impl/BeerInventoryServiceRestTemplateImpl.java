@@ -18,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import prv.jws.beer.service.services.inventory.BeerInventoryService;
 import prv.jws.beer.service.services.inventory.model.BeerInventoryDto;
 
-@Profile("!local-discovery")
+@Profile("!local-discovery & !digitalocean")
 @Slf4j
 @Service
 @ConfigurationProperties(prefix = "sfg.brewery.inventory", ignoreUnknownFields = true)
