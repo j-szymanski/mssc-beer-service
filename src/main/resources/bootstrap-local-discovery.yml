@@ -3,8 +3,10 @@ spring:
     discovery:
       enabled: true
     config:
+      enabled: true
       discovery:
         service-id: config-server
+        enabled: true
       fail-fast: false
       password: MyPassword
       username: MyUserName
